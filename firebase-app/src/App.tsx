@@ -1,36 +1,20 @@
-// import ProductoForm from './components/ProductoForm'
-// import{ProductoLista} from './components/ProductoLista'
-import { ProductoListaPaginada } from './components/ProductoListaPaginada'
-//import {obtenerProductosDisponibles} from './services/productoService'
-//import {useState} from 'react'
+import { poblarVehiculos } from './scripts/generarVehiculos'
+import { VehiculoListaPaginada } from './components/VehiculoListaPaginada' // 👈 Importamos el nuevo componente
 
-/* function App() {
-  const [productoEditar, setProductoEditar] = useState<ProductoConId | null>(null);
-  return (
-    <div>
-      <h1>Registro de productos</h1>
-      <ProductoForm
-  key={productoEditar?.id ?? 'nuevo'}
-  productoEditar={productoEditar}
-  onEditarChange={setProductoEditar}
-/>
-      <ProductoLista onEditar={setProductoEditar}/>
-    </div>
-  )
-}
-
-export default App */
 function App() {
-  return (
-/* <button onClick={async() => {
-const productosDeConsulta= await obtenerProductosDisponibles();
-console.log("Productos de consulta: ", productosDeConsulta);
+  
+  const generar = async () => {
+    await poblarVehiculos()
+    console.log('Vehículos generados.')
+  }
 
-}}>Consulta</button>*/
-<>
-<h1>Productos paginados</h1>
-  <ProductoListaPaginada/>
-</>
+  return (
+    <div className="App">
+      <h1>Taller Práctico N° 8 - Paginación Eficiente de Datos</h1>
+      <button onClick={generar}>Generar Vehículos</button>
+      {/* ====== SECCIÓN TALLER 8 ====== */}
+      <VehiculoListaPaginada />
+    </div>
   )
 }
 

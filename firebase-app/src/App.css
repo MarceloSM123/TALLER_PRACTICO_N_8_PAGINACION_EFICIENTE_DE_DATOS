@@ -1,184 +1,149 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* Estilos de la aplicación. No se ha tocado ninguna lógica ni marcado:
+   las reglas con !important solo sustituyen estilos en línea existentes. */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+.App {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  gap: 22px;
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+/* Acción de utilidad: generar datos de prueba. */
+.App > button,
+.App > div[style] > button {
+  align-self: flex-start;
+  color: var(--ink);
+  background: var(--signal);
+  border-color: var(--signal);
+  box-shadow: 0 10px 24px -14px rgba(255, 180, 84, 0.9);
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.App > button:hover:not(:disabled),
+.App > div[style] > button:hover:not(:disabled) {
+  color: var(--ink);
+  background: #ffc877;
+  border-color: #ffc877;
+  box-shadow: 0 14px 30px -14px rgba(255, 180, 84, 0.95);
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
+/* Panel del taller: antes era un recuadro claro con relleno en línea. */
+.App > div[style] {
   position: relative;
-  width: 100%;
+  padding: 26px !important;
+  background: linear-gradient(180deg, var(--panel) 0%, #101720 100%);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+.App > div[style] > h2 {
+  margin: 0 0 20px;
+  padding-left: 13px;
+  border-left: 3px solid var(--signal);
+  color: var(--text);
+}
+
+/* Barra de navegación paginada. */
+.App [style*='margin-bottom'] {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: 10px !important;
+  margin-bottom: 20px !important;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.App [style*='margin-bottom'] span {
+  padding: 4px 16px;
+  border-inline: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Indicador de página: la lectura grande en ámbar es el sello visual. */
+.App [style*='margin-bottom'] strong {
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--signal);
+}
+
+/* Rejilla de vehículos. */
+.App [style*='display: grid'] {
+  display: grid !important;
+  gap: 14px !important;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  min-height: 48px;
+}
+
+/* Tarjeta de especificaciones. */
+.App [style*='#ccc'] {
+  position: relative;
+  padding: 14px 16px !important;
+  border: 1px solid var(--line) !important;
+  border-left: 3px solid var(--cool) !important;
+  border-radius: 6px !important;
+  background: linear-gradient(180deg, var(--panel-hi), var(--panel));
+  box-shadow: 0 10px 24px -20px rgba(0, 0, 0, 0.9);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.App [style*='#ccc']:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 180, 84, 0.45) !important;
+  border-left-color: var(--signal) !important;
+  box-shadow: 0 16px 30px -18px rgba(0, 0, 0, 0.95);
+}
+
+.App [style*='#ccc'] p {
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.75;
+  font-variant-numeric: tabular-nums;
+  color: var(--cool);
+}
+
+.App [style*='#ccc'] strong {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.App [style*='#ccc'] p:last-child {
+  color: #8ee3e7;
+}
+
+@media (max-width: 640px) {
+  .App {
+    gap: 16px;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .App > div[style] {
+    padding: 18px !important;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  .App [style*='display: grid'] {
+    grid-template-columns: 1fr;
+  }
+
+  .App [style*='margin-bottom'] {
+    padding: 10px;
+    gap: 8px !important;
+  }
+
+  .App [style*='margin-bottom'] span {
+    padding-inline: 8px;
   }
 }
